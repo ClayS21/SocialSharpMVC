@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SocialSharp</title>
+    <link href="~/images/favicon.png" rel="icon" type="image/png" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/tailwind.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SocialSharpMVC.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div id="wrapper">
+        @* Topbar *@
+        <header class="z-[100] h-[--m-top] fixed top-0 left-0 w-full flex items-center bg-white/80 sky-50 backdrop-blur-xl border-b border-slate-200">
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </header>
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @* Assets scripts *@
+    <script src="~/js/uikit.min.js"></script>
+    <script src="~/js/simplebar.js"></script>
+    <script src="~/js/script.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
