@@ -11,63 +11,11 @@
 <body>
     <div id="wrapper">
         @* Topbar *@
-        <header class="header">
-            <div>
-                <div>
-                    <button class="btn-sidebar">
-                        <ion-icon name="menu-outline"></ion-icon>
-                        <ion-icon name="close-outline"></ion-icon>
-                    </button>
 
-                    <div class="logo">
-                        <a href="#">
-                            <img src="~/images/logo.png" />
-                            <span>Social Sharp</span>
-                        </a>
-                    </div>
-                </div>
+        <partial name="Navigation/_TopBar" />
 
-                <div>
-                    <div>
-                        <form id="search-box">
-                            <ion-icon name="search"></ion-icon>
-                            <input type="text" name="query" placeholder="Search Posts, Friends..." />
-                        </form>
-
-                        <div>
-                            <button type="button">
-
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     width="24"
-                                     height="24"
-                                     viewBox="0 0 24 24"
-                                     fill="none"
-                                     stroke="#000000"
-                                     stroke-width="2"
-                                     stroke-linecap="round"
-                                     stroke-linejoin="round">
-                                    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                                    <path d="M13.73 21a2 2 0 01-3.46 0" />
-                                    <path d="M2 8c0-2.2.7-4.3 2-6" />
-                                    <path d="M22 8a10 10 0 00-2-6" />
-                                </svg>
-
-                                <div class="badge" id="notification-count">0</div>
-
-                            </button>
-
-                            <div class="dropdown-menu">
-                                <h3>Notifications</h3>
-                            </div>
-
-                            <button type="button"></button>
-                            <div></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </header>
+        <partial name="Navigation/_Sidebar" />
+        
         @RenderBody()
     </div>
 
