@@ -9,9 +9,14 @@
             @* Stories placeholder *@
             <div class="stories-container">Stories</div>
         </div>
-        <div class="right-sidebar"></div>
+        <div class="right-sidebar">
+            <partial name="Sidebar/_SuggestedFriends" />
+
+            <partial name="Sidebar/_Trending"/>
+        </div>
     </div>
 
 </main>
 
 <partial name="Modals/_CreateStory" />
+<partial name="Modals/_CreateStatus" />
