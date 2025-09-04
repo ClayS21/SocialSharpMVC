@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SocialSharpMVC.Models;
 
 namespace SocialSharpMVC.Controllers
 {
