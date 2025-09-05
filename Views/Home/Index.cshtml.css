@@ -1,0 +1,31 @@
+.post {
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.336);
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.post-header {}
+
+.post-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-user-img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post-user-title {
+
+    h4 {
+        font-weight: 500;
+    }
+    h6 {
+        font-weight: 400;
+        color: gray;
+    }
+}

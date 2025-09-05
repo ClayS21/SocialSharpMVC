@@ -7,3 +7,25 @@
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
 }
+
+.header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
+    overflow: hidden;
+}
+
+.btn-sidebar {
+    display: none;
+}
+
+.image-logo {
+    height: 60px;
+    display: inline-block;
+}
+
+.logo {
+    border: 1px solid black;
+}
+
