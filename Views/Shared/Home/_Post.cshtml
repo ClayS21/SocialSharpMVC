@@ -1,5 +1,20 @@
 @model Post
 
+@{
+    TimeSpan timeSpanSincePosted = DateTime.UtcNow.Subtract(Model.DateCreated);
+
+    string displayTime = "";
+
+    if (timeSpanSincePosted.TotalDays >= 1)
+        displayTime = $"{timeSpanSincePosted.Days} day ago";
+    else if (timeSpanSincePosted.TotalHours >= 1)
+        displayTime = $"{timeSpanSincePosted.Hours} hours ago";
+    else if (timeSpanSincePosted.TotalMinutes >= 1)
+        displayTime = $"{timeSpanSincePosted} minutes ago";
+    else
+        displayTime = "Just now";
+}
+
 <div class="post">
 
     <div class="post-header">
@@ -8,7 +23,7 @@
 
             <div class="post-user-title">
                 <h4 class="post-user-name">@Model.User.FullName</h4>
-                <h6>@Model.DateCreated.ToString("MM/dd/yy")</h6>
+                <h6 title="@Model.DateCreated.ToString()">@displayTime</h6>
             </div>
         </a>
 
