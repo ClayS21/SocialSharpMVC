@@ -10,8 +10,6 @@
     max-width: 80ch;
 }
 
-.post-header {}
-
 .post-user {
     display: flex;
     align-items: center;
