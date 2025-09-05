@@ -3,6 +3,8 @@
     justify-content: space-between;
     padding: 1rem;
     box-shadow: 1px 0 5px rgba(120, 120, 120, 0.401);
+    align-items: center;
+    margin-block-end: 1rem;
 }
 
 .img-logo {
@@ -10,7 +12,6 @@
 }
 
 .logo {
-    border: 1px solid black;
 
     a {
         text-decoration: none;

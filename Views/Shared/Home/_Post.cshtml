@@ -1,0 +1,28 @@
+@model Post
+
+<div class="post">
+
+    <div class="post-header">
+        <a class="post-user">
+            <img src="@(@Model.User.ProfilePictureUrl ?? "~/images/avatar/user.png")" alt="" class="post-user-img">
+
+            <div class="post-user-title">
+                <h4 class="post-user-name">@Model.User.FullName</h4>
+                <h6>@Model.DateCreated.ToString("MM/dd/yy")</h6>
+            </div>
+        </a>
+
+        <div class="post-menu"></div>
+    </div>
+
+    <div class="post-body">
+
+        <div class="post-body-text">@Model.Content</div>
+
+        @if (!string.IsNullOrEmpty(@Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" class="post-img">
+        }
+    </div>
+
+</div>
