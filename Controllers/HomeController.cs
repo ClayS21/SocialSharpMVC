@@ -19,7 +19,7 @@ namespace SocialSharpMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allPosts = await _context.Posts.Include(m => m.User).ToListAsync();
+            var allPosts = await _context.Posts.Include(m => m.User).OrderByDescending(n => n.DateCreated).ToListAsync();
             return View(allPosts);
         }
 

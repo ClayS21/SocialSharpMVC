@@ -1,7 +1,9 @@
-@{}
+@model PostVM
 
-<form action="">
-    <textarea name="content" id="" rows="2" placeholder="What do you have in mind?"></textarea>
+<form asp-controller="Home" asp-action="CreatePost">
+    <textarea name="content" id="" rows="2" placeholder="What do you have in mind?" asp-for="@Model.Content"></textarea>
 
     <input type="file" name="uploadedContent" id="imageUpload" accept="image/png,image/jpeg">
+
+    <button type="submit">Create</button>
 </form>
