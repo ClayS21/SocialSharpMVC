@@ -1,9 +1,13 @@
 .post {
-    margin: 1rem;
+    margin: 2rem 1rem;
     padding: 1rem;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.336);
     border-radius: 1rem;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    max-width: 80ch;
 }
 
 .post-header {}
@@ -28,4 +32,14 @@
         font-weight: 400;
         color: gray;
     }
+}
+
+.post-body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.post-img {
+    width: 100%;
 }

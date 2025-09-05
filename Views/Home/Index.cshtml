@@ -32,17 +32,25 @@
             <div class="post-header">
                 <a class="post-user">
                     <img src="@(post.User.ProfilePictureUrl ?? "~/images/avatar/user.png")" alt="" class="post-user-img">
-                    
+
                     <div class="post-user-title">
                         <h4 class="post-user-name">@post.User.FullName</h4>
-                        <h6>@post.DateCreated</h6>
+                        <h6>@post.DateCreated.ToString("MM/dd/yy")</h6>
                     </div>
                 </a>
 
                 <div class="post-menu"></div>
             </div>
 
-            <div class="post-body"></div>
+            <div class="post-body">
+
+                <div class="post-body-text">@post.Content</div>
+
+                @if (!string.IsNullOrEmpty(post.ImageUrl))
+                {
+                    <img src="@post.ImageUrl" class="post-img">
+                }
+            </div>
 
         </div>
     }
