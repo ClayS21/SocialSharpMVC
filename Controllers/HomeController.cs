@@ -63,5 +63,34 @@ namespace SocialSharpMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> TogglePostLike(PostLikeVM postLikeVM)
+        {
+            int loggedUser = 1;
+
+            // Check if user has already liked the post
+
+            var like = await _context.Likes.Where(l => l.PostId == postLikeVM.PostId && l.UserId == loggedUser).FirstOrDefaultAsync();
+
+            if (like != null)
+            {
+                _context.Likes.Remove(like);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var newLike = new Like()
+                {
+                    PostId = postLikeVM.PostId,
+                    UserId = loggedUser
+                };
+
+                await _context.Likes.AddAsync(newLike);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
