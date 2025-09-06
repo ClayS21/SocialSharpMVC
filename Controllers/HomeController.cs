@@ -44,7 +44,7 @@ namespace SocialSharpMVC.Controllers
 
                 if (post.Image.ContentType.Contains("image"))
                 {
-                    string rootFolderPathImages = Path.Combine(rootFolderPath, "images");
+                    string rootFolderPathImages = Path.Combine(rootFolderPath, "images/uploaded");
                     Directory.CreateDirectory(rootFolderPathImages);
 
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(post.Image.FileName);
@@ -53,7 +53,7 @@ namespace SocialSharpMVC.Controllers
                     using (var stream = new FileStream(filePath, FileMode.Create))
                         await post.Image.CopyToAsync(stream);
 
-                    newPost.ImageUrl = "/images/" + fileName;
+                    newPost.ImageUrl = "/images/uploaded/" + fileName;
                 }
             }
 

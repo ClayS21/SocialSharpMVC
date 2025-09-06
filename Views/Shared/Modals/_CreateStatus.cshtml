@@ -1,9 +1,38 @@
 @model PostVM
 
-<form asp-controller="Home" asp-action="CreatePost">
+<form asp-controller="Home" asp-action="CreatePost" enctype="multipart/form-data">
     <textarea name="content" id="" rows="2" placeholder="What do you have in mind?" asp-for="@Model.Content"></textarea>
 
-    <input type="file" name="uploadedContent" id="imageUpload" accept="image/png,image/jpeg">
+    <input type="file" name="image" id="imageUpload" accept="image/png, image/jpeg">
+
+    <div class="hidden" id="imagePreviewContainer">
+        <img src="#" alt="" id="imagePreview">
+    </div>
+
+    <button id="imageUploadBtn" type="button">Image</button>
 
     <button type="submit">Create</button>
 </form>
+
+<script>
+    document.getElementById('imageUploadBtn').addEventListener('click', function() {
+        document.getElementById('imageUpload').click();
+    });
+
+    document.getElementById('imageUpload').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const imagePreview = document.getElementById('imagePreview');
+
+        if(file) {
+            const reader = new FileReader();
+            imagePreviewContainer.classList.remove('hidden');
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        } else {
+            imagePreviewContainer.classList.add('hidden');
+        }
+    })
+</script>
