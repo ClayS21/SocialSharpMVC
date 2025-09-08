@@ -19,7 +19,14 @@ namespace SocialSharpMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allPosts = await _context.Posts.Include(p => p.User).Include(p => p.Likes).ThenInclude(l => l.User).OrderByDescending(p => p.DateCreated).ToListAsync();
+            var allPosts = await _context.Posts
+                .Include(p => p.User)
+                .Include(p => p.Comments).ThenInclude(c => c.User)
+                .Include(p => p.Likes)
+                .ThenInclude(l => l.User)
+                .OrderByDescending(p => p.DateCreated)
+                .ToListAsync();
+
             return View(allPosts);
         }
 
@@ -88,6 +95,27 @@ namespace SocialSharpMVC.Controllers
                 await _context.Likes.AddAsync(newLike);
                 await _context.SaveChangesAsync();
             }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPostComment(PostCommentVM postCommentVM)
+        {
+            int loggedUser = 1;
+
+            // Create a post object
+
+            var newComment = new Comment()
+            {
+                UserId = loggedUser,
+                PostId = postCommentVM.PostId,
+                Content = postCommentVM.Content,
+                DateCreated = DateTime.UtcNow,
+                DateUpdated = DateTime.UtcNow
+            };
+            await _context.Comments.AddAsync(newComment);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }

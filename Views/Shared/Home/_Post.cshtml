@@ -51,7 +51,40 @@
             <a href="">
                 @Model.Likes.Count
             </a>
+
+            <a>@Model.Comments.Count</a>
         </form>
+
+        <div class="comment-section">
+            @foreach(var comment in Model.Comments.OrderByDescending(c => c.DateCreated).Take(3))
+            {
+                <div class="comment-box">
+                    <a href="">
+                        <img src="@(comment.User.ProfilePictureUrl ?? "~/images/avatar/user.png")" alt="" class="comment-user-img">
+                    </a>
+                    <div class="comment">
+                        <a href="">@comment.User.FullName</a>
+                        <small>@comment.DateCreated.ToString()</small>
+                        <p>@comment.Content</p>
+                    </div>
+
+                </div>
+            }
+
+            @if (Model.Comments.Count > 3)
+            {
+                <div>Show all comments</div>
+            }
+        </div>
+
+        <div class="post-comment">
+            <form asp-controller="Home" asp-action="AddPostComment">
+                <input type="hidden" name="postId" value="@Model.PostId">
+
+                <textarea name="content" placeholder="Add comment..."></textarea>
+                <button type="submit">Comment</button>
+            </form>
+        </div>
     </div>
 
 </div>
