@@ -40,4 +40,18 @@
         }
     </div>
 
+    <div class="post-actions">
+        <form asp-controller="Home" asp-action="TogglePostLike">
+            <input type="hidden" name="postId" value="@Model.PostId">
+
+            <button type="submit">
+                <i class="@(Model.Likes.Any(l => l.UserId == 1) ? "ri-heart-fill" : "ri-heart-line") like-icon"></i>
+            </button>
+
+            <a href="">
+                @Model.Likes.Count
+            </a>
+        </form>
+    </div>
+
 </div>

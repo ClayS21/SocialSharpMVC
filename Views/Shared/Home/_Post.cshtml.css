@@ -41,3 +41,11 @@
 .post-img {
     width: 100%;
 }
+
+.like-icon {
+    color: red;
+}
+
+.post-actions button {
+    all: unset;
+}
