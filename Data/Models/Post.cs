@@ -13,6 +13,8 @@ namespace SocialSharpMVC.Data.Models
 
         public int NumOfReports { get; set; }
 
+        public bool IsPrivate { get; set; }
+
         public DateTime DateCreated { get; set; }
 
         public DateTime DateUpdated { get; set; }
