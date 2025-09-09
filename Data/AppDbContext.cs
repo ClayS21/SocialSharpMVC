@@ -21,11 +21,18 @@ namespace SocialSharpMVC.Data
 
         public DbSet<Report> Reports { get; set; }
 
+        public DbSet<Story> Stories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Posts)
-                .WithOne(u => u.User)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Stories)
+                .WithOne(s => s.User)
                 .HasForeignKey(p => p.UserId);
 
             modelBuilder.Entity<Like>()
