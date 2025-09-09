@@ -120,5 +120,19 @@ namespace SocialSharpMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> RemovePostComment(int commentId)
+        {
+            var commentDb = await _context.Comments.FirstOrDefaultAsync(c => c.Id == commentId);
+
+            if (commentDb != null)
+            {
+                _context.Comments.Remove(commentDb);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

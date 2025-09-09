@@ -49,3 +49,20 @@
 .post-actions button {
     all: unset;
 }
+
+.comment-box {
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 1rem;
+    padding: .5rem;
+    margin-block: 1rem;
+    display: flex;
+    column-gap: 1rem;
+}
+
+.comment-user-img {
+    border-radius: 50%;
+}
+
+.comment {
+    flex-grow: 1;
+}

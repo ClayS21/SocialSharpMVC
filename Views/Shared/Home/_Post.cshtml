@@ -68,6 +68,15 @@
                         <p>@comment.Content</p>
                     </div>
 
+                    <div class="comment-action">
+                        <form asp-controller="Home" asp-action="RemovePostComment">
+                                <input type="hidden" name="commentId" value="@comment.Id">
+                                <button type="submit">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                        </form>
+                    </div>
+
                 </div>
             }
 
