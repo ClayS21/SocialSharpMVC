@@ -19,6 +19,8 @@ namespace SocialSharpMVC.Data
 
         public DbSet<Favorite> Favorites { get; set; }
 
+        public DbSet<Report> Reports { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
@@ -70,6 +72,22 @@ namespace SocialSharpMVC.Data
                 .HasOne(f => f.User)
                 .WithMany(u => u.Favorites)
                 .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Reports
+
+            modelBuilder.Entity<Report>().HasKey(r => new { r.PostId, r.UserId });
+
+            modelBuilder.Entity<Report>()
+                .HasOne(r => r.Post)
+                .WithMany(p => p.Reports)
+                .HasForeignKey(r => r.PostId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Report>()
+                .HasOne(r => r.User)
+                .WithMany(u => u.Reports)
+                .HasForeignKey(r => r.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
